@@ -350,6 +350,47 @@
         },
         "x-codegen-request-body-name": "body"
       }
+    },
+    "/v10/vehicle/register": {
+      "post": {
+        "tags": [
+          "V10"
+        ],
+        "operationId": "V10_RegisterVehicle",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1RegisterVehicleRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/rpcStatus"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
     }
   },
   "components": {
@@ -498,6 +539,14 @@
           }
         },
         "description": "Response message for the Login rpc."
+      },
+      "v1RegisterVehicleRequest": {
+        "type": "object",
+        "properties": {
+          "chasisNumber": {
+            "type": "string"
+          }
+        }
       },
       "v1WhoAmIResponse": {
         "type": "object",
