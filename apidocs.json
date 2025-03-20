@@ -474,8 +474,26 @@
     "v1RegisterVehicleRequest": {
       "type": "object",
       "properties": {
-        "chasisNumber": {
+        "chassisNumber": {
+          "type": "string",
+          "description": "Either chassis number or vin must be provided."
+        },
+        "vin": {
           "type": "string"
+        },
+        "make": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "year": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "kilometers": {
+          "type": "integer",
+          "format": "int32"
         }
       }
     },
