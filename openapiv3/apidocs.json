@@ -376,13 +376,46 @@
         "x-codegen-request-body-name": "body"
       }
     },
+    "/v10/vehicle/list": {
+      "get": {
+        "tags": [
+          "V10"
+        ],
+        "summary": "List vehicles owned by the user.",
+        "operationId": "V10_ListVehicles",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ListVehiclesResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/rpcStatus"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v10/vehicle/register": {
       "post": {
         "tags": [
           "V10"
         ],
+        "summary": "Vehicle manual registration endpoint.",
         "operationId": "V10_RegisterVehicle",
         "requestBody": {
+          "description": "Request message for the RegisterVehicle rpc.",
           "content": {
             "application/json": {
               "schema": {
@@ -515,6 +548,19 @@
         },
         "description": "Response message for the ListOperations rpc."
       },
+      "v1ListVehiclesResponse": {
+        "type": "object",
+        "properties": {
+          "vehicle": {
+            "type": "array",
+            "description": "Either chassis number or vin must be provided.",
+            "items": {
+              "$ref": "#/components/schemas/v1Vehicle"
+            }
+          }
+        },
+        "description": "Response message for the ListVehicles rpc."
+      },
       "v1LoginRequest": {
         "type": "object",
         "properties": {
@@ -572,9 +618,17 @@
       "v1RegisterVehicleRequest": {
         "type": "object",
         "properties": {
+          "vehicle": {
+            "$ref": "#/components/schemas/v1Vehicle"
+          }
+        },
+        "description": "Request message for the RegisterVehicle rpc."
+      },
+      "v1Vehicle": {
+        "type": "object",
+        "properties": {
           "chassisNumber": {
-            "type": "string",
-            "description": "Either chassis number or vin must be provided."
+            "type": "string"
           },
           "vin": {
             "type": "string"
@@ -593,7 +647,8 @@
             "type": "integer",
             "format": "int32"
           }
-        }
+        },
+        "description": "Vehicle message definition."
       },
       "v1WhoAmIResponse": {
         "type": "object",
