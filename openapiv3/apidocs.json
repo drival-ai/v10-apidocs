@@ -551,7 +551,7 @@
       "v1ListVehiclesResponse": {
         "type": "object",
         "properties": {
-          "vehicle": {
+          "vehicles": {
             "type": "array",
             "description": "Either chassis number or vin must be provided.",
             "items": {
@@ -627,6 +627,9 @@
       "v1Vehicle": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string"
+          },
           "chassisNumber": {
             "type": "string"
           },
