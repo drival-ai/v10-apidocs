@@ -664,6 +664,9 @@
           },
           "email": {
             "type": "string"
+          },
+          "picture": {
+            "type": "string"
           }
         },
         "description": "Request message for the WhoAmI rpc."
