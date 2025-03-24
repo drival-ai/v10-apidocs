@@ -450,7 +450,7 @@
         "x-codegen-request-body-name": "body"
       }
     },
-    "/v10/vehicle/{id}": {
+    "/v10/vehicle/{vin}": {
       "delete": {
         "tags": [
           "V10"
@@ -458,9 +458,9 @@
         "operationId": "V10_DeleteVehicle",
         "parameters": [
           {
-            "name": "id",
+            "name": "vin",
             "in": "path",
-            "description": "Required. Vehicle id.",
+            "description": "Required. Vehicle Identification Number (VIN) to delete.",
             "required": true,
             "schema": {
               "type": "string"
@@ -594,7 +594,6 @@
         "properties": {
           "vehicles": {
             "type": "array",
-            "description": "Either chassis number or vin must be provided.",
             "items": {
               "$ref": "#/components/schemas/v1Vehicle"
             }
@@ -668,12 +667,6 @@
       "v1Vehicle": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string"
-          },
-          "chassisNumber": {
-            "type": "string"
-          },
           "vin": {
             "type": "string"
           },

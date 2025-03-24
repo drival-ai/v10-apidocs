@@ -363,7 +363,7 @@
         ]
       }
     },
-    "/v10/vehicle/{id}": {
+    "/v10/vehicle/{vin}": {
       "delete": {
         "operationId": "V10_DeleteVehicle",
         "responses": {
@@ -383,8 +383,8 @@
         },
         "parameters": [
           {
-            "name": "id",
-            "description": "Required. Vehicle id.",
+            "name": "vin",
+            "description": "Required. Vehicle Identification Number (VIN) to delete.",
             "in": "path",
             "required": true,
             "type": "string"
@@ -503,8 +503,7 @@
           "items": {
             "type": "object",
             "$ref": "#/definitions/v1Vehicle"
-          },
-          "description": "Either chassis number or vin must be provided."
+          }
         }
       },
       "description": "Response message for the ListVehicles rpc."
@@ -567,8 +566,7 @@
       "type": "object",
       "properties": {
         "vehicle": {
-          "$ref": "#/definitions/v1Vehicle",
-          "description": "Either chassis number or vin must be provided."
+          "$ref": "#/definitions/v1Vehicle"
         }
       },
       "description": "Request message for the RegisterVehicle rpc."
@@ -576,12 +574,6 @@
     "v1Vehicle": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string"
-        },
-        "chassisNumber": {
-          "type": "string"
-        },
         "vin": {
           "type": "string"
         },
