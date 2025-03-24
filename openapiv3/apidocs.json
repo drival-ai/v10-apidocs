@@ -451,10 +451,62 @@
       }
     },
     "/v10/vehicle/{vin}": {
+      "put": {
+        "tags": [
+          "V10"
+        ],
+        "summary": "Update vehicle by VIN.",
+        "operationId": "V10_UpdateVehicle",
+        "parameters": [
+          {
+            "name": "vin",
+            "in": "path",
+            "description": "Required. Vehicle Identification Number (VIN) to update.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V10UpdateVehicleBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/rpcStatus"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      },
       "delete": {
         "tags": [
           "V10"
         ],
+        "summary": "Delete vehicle by VIN.",
         "operationId": "V10_DeleteVehicle",
         "parameters": [
           {
@@ -497,6 +549,14 @@
       "OperationsCancelOperationBody": {
         "type": "object",
         "description": "Request message for the CancelOperation rpc."
+      },
+      "V10UpdateVehicleBody": {
+        "type": "object",
+        "properties": {
+          "vehicle": {
+            "$ref": "#/components/schemas/v1Vehicle"
+          }
+        }
       },
       "protobufAny": {
         "type": "object",
