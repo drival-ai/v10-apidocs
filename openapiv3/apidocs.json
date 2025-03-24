@@ -449,6 +449,47 @@
         },
         "x-codegen-request-body-name": "body"
       }
+    },
+    "/v10/vehicle/{id}": {
+      "delete": {
+        "tags": [
+          "V10"
+        ],
+        "operationId": "V10_DeleteVehicle",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Required. Vehicle id.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/rpcStatus"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
