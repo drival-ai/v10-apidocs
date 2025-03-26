@@ -333,6 +333,101 @@
         "x-codegen-request-body-name": "body"
       }
     },
+    "/v10/trip/start": {
+      "post": {
+        "tags": [
+          "V10"
+        ],
+        "summary": "Start a trip.",
+        "operationId": "V10_StartTrip",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1CreateTripRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/rpcStatus"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/v10/usermetadata/{id}": {
+      "put": {
+        "tags": [
+          "V10"
+        ],
+        "summary": "Update user metadata by id.",
+        "operationId": "V10_UpdateUserMetadata",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Required. User ID to update.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/V10UpdateUserMetadataBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/rpcStatus"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
     "/v10/v1:do": {
       "post": {
         "tags": [
@@ -550,6 +645,14 @@
         "type": "object",
         "description": "Request message for the CancelOperation rpc."
       },
+      "V10UpdateUserMetadataBody": {
+        "type": "object",
+        "properties": {
+          "userMetadata": {
+            "$ref": "#/components/schemas/v1UserMetadata"
+          }
+        }
+      },
       "V10UpdateVehicleBody": {
         "type": "object",
         "properties": {
@@ -615,6 +718,19 @@
           }
         },
         "description": "This resource represents a long-running operation that is the result of a\nnetwork API call."
+      },
+      "v1CreateTripRequest": {
+        "type": "object",
+        "properties": {
+          "vin": {
+            "type": "string",
+            "description": "Required. Vehicle Identification Number (VIN) to be used for the trip."
+          },
+          "startTime": {
+            "title": "Required. Start time of the trip",
+            "type": "string"
+          }
+        }
       },
       "v1DoRequest": {
         "type": "object",
@@ -723,6 +839,21 @@
           }
         },
         "description": "Request message for the RegisterVehicle rpc."
+      },
+      "v1UserMetadata": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "rank": {
+            "type": "string"
+          },
+          "points": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
       },
       "v1Vehicle": {
         "type": "object",
