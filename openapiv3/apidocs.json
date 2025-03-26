@@ -344,7 +344,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/v1CreateTripRequest"
+                "$ref": "#/components/schemas/v1StartTripRequest"
               }
             }
           },
@@ -719,19 +719,6 @@
         },
         "description": "This resource represents a long-running operation that is the result of a\nnetwork API call."
       },
-      "v1CreateTripRequest": {
-        "type": "object",
-        "properties": {
-          "vin": {
-            "type": "string",
-            "description": "Required. Vehicle Identification Number (VIN) to be used for the trip."
-          },
-          "startTime": {
-            "title": "Required. Start time of the trip",
-            "type": "string"
-          }
-        }
-      },
       "v1DoRequest": {
         "type": "object",
         "properties": {
@@ -839,6 +826,19 @@
           }
         },
         "description": "Request message for the RegisterVehicle rpc."
+      },
+      "v1StartTripRequest": {
+        "type": "object",
+        "properties": {
+          "vin": {
+            "type": "string",
+            "description": "Required. Vehicle Identification Number (VIN) to be used for the trip."
+          },
+          "startTime": {
+            "title": "Required. Start time of the trip",
+            "type": "string"
+          }
+        }
       },
       "v1UserMetadata": {
         "type": "object",
