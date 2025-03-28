@@ -380,7 +380,7 @@
         "tags": [
           "V10"
         ],
-        "summary": "Update user metadata by id.",
+        "summary": "Get user metadata by id.",
         "operationId": "V10_GetUserMetadata",
         "parameters": [
           {
