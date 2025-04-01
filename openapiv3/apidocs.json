@@ -388,7 +388,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/v1ListVehiclesResponse"
+                  "$ref": "#/components/schemas/v1ListTripsResponse"
                 }
               }
             }
@@ -956,6 +956,17 @@
           }
         },
         "description": "Response message for the ListOperations rpc."
+      },
+      "v1ListTripsResponse": {
+        "type": "object",
+        "properties": {
+          "trips": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v1Trip"
+            }
+          }
+        }
       },
       "v1ListVehiclesResponse": {
         "type": "object",
