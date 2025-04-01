@@ -429,7 +429,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "$ref": "#/components/schemas/v1StartTripResponse"
                 }
               }
             }
@@ -918,9 +918,18 @@
             "type": "string",
             "description": "Required. Trip ID to end."
           },
+          "distance": {
+            "type": "string",
+            "description": "Required. Total distance."
+          },
+          "points": {
+            "type": "integer",
+            "description": "Required. Total points earned.",
+            "format": "int32"
+          },
           "endTime": {
-            "title": "Required. End time of the trip",
-            "type": "string"
+            "type": "string",
+            "description": "Required. End time of the trip."
           }
         }
       },
@@ -1032,6 +1041,15 @@
           "startTime": {
             "title": "Required. Start time of the trip",
             "type": "string"
+          }
+        }
+      },
+      "v1StartTripResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Trip id."
           }
         }
       },
