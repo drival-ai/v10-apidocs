@@ -384,11 +384,20 @@
         "operationId": "V10_ListTrips",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "A successful response.(streaming responses)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/v1ListTripsResponse"
+                  "title": "Stream result of v1Trip",
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/v1Trip"
+                    },
+                    "error": {
+                      "$ref": "#/components/schemas/rpcStatus"
+                    }
+                  }
                 }
               }
             }
@@ -646,11 +655,20 @@
         "operationId": "V10_ListVehicles",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "A successful response.(streaming responses)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/v1ListVehiclesResponse"
+                  "title": "Stream result of v1Vehicle",
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/v1Vehicle"
+                    },
+                    "error": {
+                      "$ref": "#/components/schemas/rpcStatus"
+                    }
+                  }
                 }
               }
             }
@@ -959,29 +977,6 @@
           }
         },
         "description": "Response message for the ListOperations rpc."
-      },
-      "v1ListTripsResponse": {
-        "type": "object",
-        "properties": {
-          "trips": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/v1Trip"
-            }
-          }
-        }
-      },
-      "v1ListVehiclesResponse": {
-        "type": "object",
-        "properties": {
-          "vehicles": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/v1Vehicle"
-            }
-          }
-        },
-        "description": "Response message for the ListVehicles rpc."
       },
       "v1LoginRequest": {
         "type": "object",
