@@ -508,6 +508,46 @@
           }
         },
         "x-codegen-request-body-name": "body"
+      },
+      "delete": {
+        "tags": [
+          "V10"
+        ],
+        "summary": "Deletes a trip by id.",
+        "operationId": "V10_DeleteTrip",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Required. Trip ID to delete.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/rpcStatus"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/v10/usermetadata/{id}": {
